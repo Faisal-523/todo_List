@@ -1,0 +1,29 @@
+:root{
+    --clr-primary: teal;
+    --clr-font:whitesmoke;
+}
+body{
+    margin:0;
+    font-family: sans-serif;
+    font-weight: 300;
+    font-size: 1.5rem;
+    background-color: var(--clr-primary);
+    color: var(--clr-font);
+    display:grid;
+    grid: 
+    'header header header header' auto
+    '...... lists  active ......' auto/
+    1fr minmax(100px, 300px) minmax(250px, 500px) 1fr; //col
+}
+.title{
+    grid-area: header;
+    text-align: center;
+    font-size: calc(7vw + 2rem);
+    font-weight: 900;
+    letter-spacing: 1px;
+    border:1px solid black;
+}
+.allProjects{
+    grid-area: lists;
+    border:1px solid black;
+}
