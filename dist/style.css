@@ -1,6 +1,9 @@
 :root{
-    --clr-primary: teal;
-    --clr-font:whitesmoke;
+    --clr-primary:darkturquoise;
+    --clr-font:black;
+    --clr-light:#f4f4f4;
+    --clr-dark:#333;
+    --spacer:2rem;
 }
 body{
     margin:0;
@@ -18,7 +21,7 @@ body{
 .title{
     grid-area: header;
     text-align: center;
-    font-size: calc(7vw + 2rem);
+    font-size: 3em;
     font-weight: 900;
     letter-spacing: 1px;
     border:1px solid black;
@@ -26,4 +29,32 @@ body{
 .allProjects{
     grid-area: lists;
     border:1px solid black;
+}
+
+.project-list{
+    font-size: 1.2rem;
+    list-style: square;
+    line-height: 1.7;
+}
+
+.todo-list{
+    grid-area:active;
+    background-color: var(--clr-light);
+    color: var(--clr-dark);
+}
+
+.todo-header{
+    background-color: #e4e4e4;
+    padding: var(--spacer);
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.list-title{
+    margin:0 1em 0 0;
+}
+.task-count{
+    margin:0;
+    font-size: 1rem;
 }

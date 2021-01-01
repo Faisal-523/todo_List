@@ -25,6 +25,7 @@
             name,
             description,
             dueDate,
+            completion:false,
         });
     };
 
@@ -36,5 +37,5 @@
         getActiveProject().todoList.forEach(item=>console.log(item));
     }
 
-    export {addProject,getActiveProject,createTask,displayProjects,displayTasks};
+    export {allProjects, addProject,getActiveProject,createTask,displayProjects,displayTasks};
 
