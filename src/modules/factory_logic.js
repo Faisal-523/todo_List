@@ -20,6 +20,11 @@
         return activeArray[0];
     };
 
+    const setActiveProject = (index) =>{
+        clearActiveProjects();
+        allProjects[index].active = true;
+    }
+
     const createTask = function(name, description, dueDate){
         getActiveProject().todoList.push({
             name,
@@ -37,5 +42,5 @@
         getActiveProject().todoList.forEach(item=>console.log(item));
     }
 
-    export {allProjects, addProject,getActiveProject,createTask,displayProjects,displayTasks};
+    export {allProjects, addProject,setActiveProject,getActiveProject,createTask,displayProjects,displayTasks};
 

@@ -33,12 +33,14 @@ body{
     font-size: 1.2rem;
     list-style: square;
     line-height: 1.7;
+    cursor:pointer;
 }
 
 .todo-list{
     grid-area:active;
     background-color: var(--clr-light);
     color: var(--clr-dark);
+    display: none;
 }
 
 .todo-header{
@@ -57,6 +59,11 @@ body{
     font-size: 1rem;
 }
 
+.todo-body{
+    padding:var(--spacer);
+    position: relative;
+}
+
 .task label{
     display: inline-flex;
     align-items:center;
@@ -67,6 +74,17 @@ body{
     position: relative;
     margin-bottom: 1.25em;
 }
+
+.task::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: -0.5em;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.1;
+  }
 
 [type="checkbox"]{
     -webkit-appearance: none;
