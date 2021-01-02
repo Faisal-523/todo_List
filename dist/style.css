@@ -24,11 +24,9 @@ body{
     font-size: 3em;
     font-weight: 900;
     letter-spacing: 1px;
-    border:1px solid black;
 }
 .allProjects{
     grid-area: lists;
-    border:1px solid black;
 }
 
 .project-list{
@@ -57,4 +55,67 @@ body{
 .task-count{
     margin:0;
     font-size: 1rem;
+}
+
+.task label{
+    display: inline-flex;
+    align-items:center;
+    position:relative;
+}
+
+.task{
+    position: relative;
+    margin-bottom: 1.25em;
+}
+
+[type="checkbox"]{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.custom-checkbox{
+    --size: 0.75em;
+    display: inline-block;
+    width: var(--size);
+    height: var(--size);
+    margin-right: var(--size);
+    cursor: pointer;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+}
+
+.task:hover .custom-checkbox{
+    transform: scale(1.2);
+    color: var(--clr-primary);
+    box-shadow: inset 0 0 0 2px white;
+    transition: transform 300ms ease-in-out;
+}
+
+[type="checkbox"]:checked + label{
+    opacity: 0.5;
+}
+
+[type="checkbox"]:checked + label .custom-checkbox{
+    background: currentColor;
+    border-color: currentColor;
+    box-shadow: inset 0 0 0 2px white;
+}
+
+.task label::after{
+    content:'';
+    position: absolute;
+    left:1.5em;
+    right: 0;
+    top: 50%;
+    height: 3px;
+    background: currentColor;
+    transform: scale(0);
+    transform-origin: right;
+    transition: transform 150ms ease-in-out;
+}
+
+[type="checkbox"]:checked + label::after{
+    transform: scale(1);
+    transform-origin: left;
 }
