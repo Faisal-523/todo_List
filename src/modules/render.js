@@ -1,8 +1,10 @@
-import {allProjects, setActiveProject, getActiveProject} from './factory_logic.js'
+import {allProjects, setActiveProject, getActiveProject,clearActiveProjects, deleteActiveProject, clearCompletedTasks} from './factory_logic.js'
 
 const taskBody = document.querySelector('.todo-list');
 const taskContainer = document.querySelector('.tasks');
 const projectList = document.querySelector('.project-list');
+const delete_btn = taskBody.querySelector('.delete-items');
+console.log(delete_btn);
 
 taskContainer.addEventListener('click',(e)=>{
     if(e.target.tagName.toLowerCase() === 'input'){
@@ -20,7 +22,27 @@ projectList.addEventListener('click',(e)=>{
     }
     showTasks();
     showTaskCount();
-})
+});
+
+delete_btn.addEventListener('click',(e)=>{
+    if(e.target.id == 'clear-tasks'){
+        clearCompletedTasks();
+        showTasks();
+    }
+    else if(e.target.id == 'clear-list'){
+        deleteActiveProject();
+        clearActiveprojectDOM();
+        clearActiveProjects();
+        clearTaskBody();
+        showProjects();
+    }
+});
+
+function clearActiveprojectDOM(){
+    while(projectList.firstChild){
+        projectList.removeChild(projectList.firstChild);
+    }
+};
 
 
 function showProjects(){
@@ -39,6 +61,7 @@ function clearTaskBody(){
     while(taskContainer.firstChild){
         taskContainer.removeChild(taskContainer.firstChild);
     }
+    taskBody.style.display = 'none';
 }
 
 function showTasks(){
@@ -46,6 +69,7 @@ function showTasks(){
     let listTitle = document.querySelector('.list-title');
     let currentProject = getActiveProject();
     clearTaskBody();
+    if(currentProject){
     currentProject.todoList.forEach((item,i)=>{
         let taskElement = document.importNode(templateTask.content,true);
         let checkbox = taskElement.querySelector('input');
@@ -57,9 +81,11 @@ function showTasks(){
         label.append(item.name);
         taskContainer.appendChild(taskElement);
     });
+    
     listTitle.textContent = `${currentProject.name} tasks`;
     showTaskCount();
     taskBody.style.display = 'block';
+    }
 
 };
 

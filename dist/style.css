@@ -137,3 +137,33 @@ body{
     transform: scale(1);
     transform-origin: left;
 }
+
+.btn{
+    cursor: pointer;
+    background: 0;
+    border: 0;
+    padding: 0;
+    color:inherit;
+    outline: 0;
+}
+
+.btn.delete{
+    opacity: 0.7;
+    font-size: 1rem;
+    transition: font-size 200ms ease-out;
+}
+
+.delete-items{
+    display: flex;
+    justify-content: space-evenly;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: -35px;
+    color: var(--clr-light);
+}
+
+.btn.delete:hover{
+    color: var(--clr-dark);
+    font-size: 1.3rem;
+}
