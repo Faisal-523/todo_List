@@ -26,19 +26,19 @@ projectList.addEventListener('click',(e)=>{
 
 delete_btn.addEventListener('click',(e)=>{
     if(e.target.id == 'clear-tasks'){
+        clearTaskBody();
         clearCompletedTasks();
         showTasks();
     }
     else if(e.target.id == 'clear-list'){
         deleteActiveProject();
-        clearActiveprojectDOM();
-        clearActiveProjects();
+        clearProjectsDOM();
         clearTaskBody();
         showProjects();
     }
 });
 
-function clearActiveprojectDOM(){
+function clearProjectsDOM(){
     while(projectList.firstChild){
         projectList.removeChild(projectList.firstChild);
     }

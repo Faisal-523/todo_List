@@ -41,11 +41,7 @@
     };
 
     const clearCompletedTasks = function(){
-        getActiveProject().todoList.forEach((item,i)=>{
-            if(item.completion){
-                getActiveProject().todoList.splice(i,1);
-            }
-        });
+        getActiveProject().todoList = getActiveProject().todoList.filter((item=>item.completion == false));
     };
 
     const displayProjects = ()=>{
