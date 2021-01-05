@@ -29,6 +29,39 @@ body{
     grid-area: lists;
 }
 
+.new{
+    background: transparent;
+    border:0;
+    color:inherit;
+    border-bottom: 1px solid currentColor;
+    font-size: inherit;
+    outline: none;
+    padding: 0.25em;
+    transition: border-bottom 250ms ease-in;
+    order:2;
+}
+
+.new:focus{
+    border-bottom-width: 3px;
+}
+
+.new::placeholder{
+    color: var(--clr-dark);
+    opacity: 0.7;
+}
+
+.new:focus::placeholder{
+    opacity:0.2;
+}
+
+.new.list{
+    font-size: 1.1rem;
+}
+
+.new.task {
+    margin-bottom: 0;
+  }
+
 .project-list{
     font-size: 1.2rem;
     list-style: square;
@@ -166,4 +199,19 @@ body{
 .btn.delete:hover{
     color: var(--clr-dark);
     font-size: 1.3rem;
+}
+
+form{
+    display:flex;
+}
+
+.btn.create{
+    font-size: 1.5rem;
+    font-weight: 900;
+    margin-right: 0.25rem;
+    transition: opacity 250ms ease-in;
+}
+
+.btn.create:hover{
+    opacity: 0.5;
 }
