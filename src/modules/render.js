@@ -1,9 +1,11 @@
-import {allProjects, setActiveProject, getActiveProject,clearActiveProjects, deleteActiveProject, clearCompletedTasks} from './factory_logic.js'
+import {allProjects, setActiveProject, getActiveProject,clearActiveProjects, deleteActiveProject, clearCompletedTasks, addProject, createTask} from './factory_logic.js'
 
 const taskBody = document.querySelector('.todo-list');
 const taskContainer = document.querySelector('.tasks');
 const projectList = document.querySelector('.project-list');
 const delete_btn = taskBody.querySelector('.delete-items');
+const projectForm = document.querySelector('.new-list-form');
+const taskForm = document.querySelector('.new-task-form');
 console.log(delete_btn);
 
 taskContainer.addEventListener('click',(e)=>{
@@ -35,6 +37,30 @@ delete_btn.addEventListener('click',(e)=>{
         clearProjectsDOM();
         clearTaskBody();
         showProjects();
+    }
+});
+
+taskForm.addEventListener('submit',(e)=>{
+    e.preventDefault();
+    const taskName = taskForm.firstElementChild.value;
+    console.log(taskName);
+    console.log(e);
+    if(taskName != ''){
+    clearTaskBody();
+    createTask(taskName, 'abc', '01/01/01');
+    showTasks();
+    }
+});
+
+projectForm.addEventListener('submit',(e)=>{
+    e.preventDefault();
+    const projectName = projectForm.firstElementChild.value;
+    console.log(e);
+    if(projectName != ''){
+    clearProjectsDOM();
+    clearTaskBody();
+    addProject(projectName, 'abc');
+    showProjects();
     }
 });
 
