@@ -7,12 +7,23 @@ const projectList = document.querySelector('.project-list');
 const delete_btn = taskBody.querySelector('.delete-items');
 const projectForm = document.querySelector('.new-list-form');
 const taskForm = document.querySelector('.new-task-form');
+
+function localSave(){
+    let jsonProject = JSON.stringify(allProjects);
+    localStorage.setItem('local1', jsonProject);
+}
+
+function localRetrieve(){
+    return localStorage.getItem('local1');
+}
+
 console.log(delete_btn);
 
 taskContainer.addEventListener('click',(e)=>{
     if(e.target.tagName.toLowerCase() === 'input'){
        getActiveProject().todoList[Number(e.target.dataset.value)].completion = e.target.checked;
        console.log(e);
+       localSave();
     }
     showTaskCount();
 });
@@ -32,12 +43,14 @@ delete_btn.addEventListener('click',(e)=>{
         clearTaskBody();
         clearCompletedTasks();
         showTasks();
+        localSave();
     }
     else if(e.target.id == 'clear-list'){
         deleteActiveProject();
         clearProjectsDOM();
         clearTaskBody();
         showProjects();
+        localSave();
     }
 });
 
@@ -53,6 +66,7 @@ taskForm.addEventListener('submit',(e)=>{
     clearTaskBody();
     createTask(taskName, 'abc', taskDate);
     showTasks();
+    localSave();
     }
 });
 
@@ -65,6 +79,7 @@ projectForm.addEventListener('submit',(e)=>{
     clearTaskBody();
     addProject(projectName, 'abc');
     showProjects();
+    localSave();
     }
 });
 
@@ -76,7 +91,7 @@ function clearProjectsDOM(){
 
 
 function showProjects(){
-
+    if(allProjects != null){
     allProjects.forEach((project, i)=>{
         let list = document.createElement('li');
         list.dataset.value = i;
@@ -84,7 +99,7 @@ function showProjects(){
         list.textContent = project.name;
         projectList.append(list);
     });
-
+  }
 };
 
 function clearTaskBody(){
@@ -126,4 +141,4 @@ function showTaskCount(){
     taskCount.textContent = `${count} tasks pending`;
 }
 
-export {showProjects, showTasks};
+export {showProjects, showTasks, localSave, localRetrieve};

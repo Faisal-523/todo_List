@@ -45,6 +45,7 @@
     };
 
     const displayProjects = ()=>{
+        console.log(allProjects);
         allProjects.forEach(project => console.log(project));
     }
 
