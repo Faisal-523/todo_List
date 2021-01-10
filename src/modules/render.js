@@ -128,7 +128,7 @@ function showTasks(){
         taskContainer.appendChild(taskElement);
     });
     
-    listTitle.textContent = `${currentProject.name} tasks`;
+    listTitle.textContent = `${currentProject.name} -> tasks`;
     showTaskCount();
     taskBody.style.display = 'block';
     }
