@@ -1,4 +1,5 @@
 import {allProjects, setActiveProject, getActiveProject,clearActiveProjects, deleteActiveProject, clearCompletedTasks, addProject, createTask} from './factory_logic.js'
+import {format, formatDistanceToNow, subDays} from 'date-fns';
 
 const taskBody = document.querySelector('.todo-list');
 const taskContainer = document.querySelector('.tasks');
@@ -42,12 +43,15 @@ delete_btn.addEventListener('click',(e)=>{
 
 taskForm.addEventListener('submit',(e)=>{
     e.preventDefault();
-    const taskName = taskForm.firstElementChild.value;
-    console.log(taskName);
+    const taskName = taskForm.querySelector('input:nth-child(1)').value;
+    let taskDate = taskForm.querySelector('input:nth-child(2)').value;
+    taskDate = taskDate.split('-')
+    console.log(new Date());
     console.log(e);
+    console.log(taskDate);
     if(taskName != ''){
     clearTaskBody();
-    createTask(taskName, 'abc', '01/01/01');
+    createTask(taskName, 'abc', taskDate);
     showTasks();
     }
 });
@@ -103,8 +107,9 @@ function showTasks(){
         checkbox.checked = item.completion;
         checkbox.dataset.value = i;
         let label = taskElement.querySelector('label');
+        let dueLabel = formatDistanceToNow(new Date(item.dueDate[0], item.dueDate[1]-1, item.dueDate[2]), {addSuffix: true});
         label.htmlFor = i
-        label.append(item.name);
+        label.append(`${item.name} | Due: ${dueLabel}`);
         taskContainer.appendChild(taskElement);
     });
     

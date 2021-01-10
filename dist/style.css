@@ -16,7 +16,7 @@ body{
     grid: 
     'header header header header' auto
     '...... lists  active ......' auto/
-    1fr minmax(100px, 300px) minmax(250px, 500px) 1fr; //col
+    1fr minmax(100px, 300px) minmax(250px, 600px) 1fr; //col
 }
 .title{
     grid-area: header;
@@ -38,7 +38,6 @@ body{
     outline: none;
     padding: 0.25em;
     transition: border-bottom 250ms ease-in;
-    order:2;
 }
 
 .new:focus{
@@ -60,7 +59,14 @@ body{
 
 .new.task {
     margin-bottom: 0;
+    order:2;
   }
+.new.date{
+    order:3;
+    margin: 1rem;
+    margin-bottom: 0;
+    width: 100%;
+}
 
 .project-list{
     font-size: 1.2rem;
